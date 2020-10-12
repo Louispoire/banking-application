@@ -17,11 +17,12 @@ namespace bankingApplication.addOn
         public double annualInterest = 0.0;
         public double serviceCharge = 0.0;
 
-        public Account (double sb, double ai)
+        public Account(double sb, double ai)
         {
             startingBalance = sb;
             annualInterest = ai;
         }
+
         public void CaclculateInterest()
         {
             double monthlyInterestRate = (annualInterest / 12);
