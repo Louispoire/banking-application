@@ -35,10 +35,10 @@ namespace bankingApplication.addOn
         public void closeAndReportChequing()
         {
             var montlhyFee = 5;
-            var extraFee = serviceCharge * 0.10;
-            var fee = (montlhyFee + extraFee);
+            var extraFee = amountOfWithdrawal * 0.10;
+            var fee = (montlhyFee + extraFee + serviceCharge);
             currentBalance -= fee;
-            Console.WriteLine("A service charge of of " + extraFee + " has been added. Total service charge: " + serviceCharge + ".");
+            Console.WriteLine("A service charge of of " + extraFee + " has been added. Total service charge: " + fee + ".");
             base.closeAndReport();
         }
     }

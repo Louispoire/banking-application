@@ -118,7 +118,7 @@ namespace bankingApplication
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
                             Console.WriteLine("Here is the report.");
-                            c1.closeAndReportChequing();
+                            c1.closeAndReportSaving();
 
                         }
                         if (option2.ToLower() == "r" || option2.ToLower() == "return" || option.ToLower() == "return menu")

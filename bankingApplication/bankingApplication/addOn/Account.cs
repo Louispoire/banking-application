@@ -16,6 +16,7 @@ namespace bankingApplication.addOn
         public double cumulatedAmountOfWithdrawal = 0;
         public double annualInterest = 0.0;
         public double serviceCharge = 0.0;
+        public AccountStatus accountStatus;
 
         public Account(double sb, double ai)
         {
@@ -27,8 +28,7 @@ namespace bankingApplication.addOn
         {
             double monthlyInterestRate = (annualInterest / 12);
             double monthlyInterest = currentBalance * monthlyInterestRate;
-            currentBalance = currentBalance + monthlyInterest;
-            
+            currentBalance = currentBalance + monthlyInterest;  
         }
 
         public string closeAndReport()
