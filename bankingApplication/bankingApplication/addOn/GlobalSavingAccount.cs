@@ -16,7 +16,7 @@ namespace bankingApplication.addOn
 
         public double USValue (double rate)
         {
-            return (currentBalance *= rate);
+            return (startingBalance *= rate);
         }
     }
 }
