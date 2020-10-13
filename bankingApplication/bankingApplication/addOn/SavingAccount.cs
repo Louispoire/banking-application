@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,6 @@ namespace bankingApplication.addOn
 {
     class SavingAccount : Account
     {
-        
         public SavingAccount(double sb, double ai) : base(sb, ai)
         {
             startingBalance = sb;
@@ -17,10 +17,12 @@ namespace bankingApplication.addOn
 
         public void MakeWithdraw(double wValue)
         {
-            var accStat = AccountStatus.active;
-            if (accStat == AccountStatus.active)
-            {
+            var accStat = AccountStatus.inactive;
+            if(startingBalance > 25 && accStat == AccountStatus.inactive) {
+                accStat = AccountStatus.active;
                 base.MakeWithdrawl(wValue);
+                if (currentBalance < 25)
+                    accStat = AccountStatus.inactive; 
             }
             else
             {
@@ -30,16 +32,17 @@ namespace bankingApplication.addOn
         
         public void MakeADeposit(double dValue)
         {
-            var accStat = AccountStatus.active;
-            if (accStat == AccountStatus.active)
+            var accStat = AccountStatus.inactive;
+            if (accStat == AccountStatus.inactive)
             {
-                if (dValue > 25)
+                base.MakeDeposit(dValue);
+                if (currentBalance > 25)
                 {
-                    base.MakeDeposit(dValue);
+                   accStat = AccountStatus.active;
                 }
                 else
                 {
-                    Console.WriteLine("Entered amount need to be higher than $25.00");
+                    Console.WriteLine("To activate the account please enter an amount to make the balance higher than $25.00 \nCurrent Balance: " + currentBalance);
                 }
             }
             else
