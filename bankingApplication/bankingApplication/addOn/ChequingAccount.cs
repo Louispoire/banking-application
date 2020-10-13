@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace bankingApplication.addOn
 {
-    class SavingAccount : Account
+    class ChequingAccount : Account
     {
 
-        public SavingAccount(double sb, double ai) : base(sb, ai)
+        public ChequingAccount(double sb, double ai) : base(sb, ai)
         {
             startingBalance = sb;
             annualInterest = ai;
