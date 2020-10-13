@@ -48,6 +48,8 @@ namespace bankingApplication.addOn
 
         public void MakeDeposit(double amount)
         {
+            currentBalance += startingBalance;
+            startingBalance = 0;
             currentBalance += amount;
             amountOfDeposit++;
             cumulatedAmountOfDeposit += amount;
@@ -56,6 +58,8 @@ namespace bankingApplication.addOn
 
         public void MakeWithdrawl(double amount)
         {
+            currentBalance += startingBalance;
+            startingBalance = 0;
             currentBalance -= amount;
             amountOfWithdrawal++;
             cumulatedAmountOfWithdrawal += amount;
