@@ -17,39 +17,37 @@ namespace bankingApplication.addOn
 
         public void MakeWithdraw(double wValue)
         {
-            var accStat = AccountStatus.inactive;
-            if(startingBalance > 25 && accStat == AccountStatus.inactive) {
-                accStat = AccountStatus.active;
-                base.MakeWithdrawl(wValue);
-                if (currentBalance < 25)
-                    accStat = AccountStatus.inactive; 
+            if (startingBalance > 25 || currentBalance > 25)
+            {
+                accountStatus = AccountStatus.active;
+                if (accountStatus == AccountStatus.active)
+                {
+                    base.MakeWithdrawl(wValue);
+                    if (currentBalance < 25)
+                    {
+                        accountStatus = AccountStatus.inactive;
+                    }
+                }
             }
             else
             {
+                accountStatus = AccountStatus.inactive;
                 Console.WriteLine("Account is inactive. Sorry for the inconvenience");
             }
         }
         
         public void MakeADeposit(double dValue)
         {
-            var accStat = AccountStatus.inactive;
-            if (accStat == AccountStatus.inactive)
+            base.MakeDeposit(dValue);
+            if (startingBalance + dValue > 25 || currentBalance + dValue > 25)
             {
-                base.MakeDeposit(dValue);
-                if (currentBalance > 25)
-                {
-                   accStat = AccountStatus.active;
-                }
-                else
-                {
-                    Console.WriteLine("To activate the account please enter an amount to make the balance higher than $25.00 \nCurrent Balance: " + currentBalance);
-                }
+                accountStatus = AccountStatus.active;
             }
             else
             {
-                Console.WriteLine("Account is inactive. Sorry for the inconvenience");
+                accountStatus = AccountStatus.inactive;
+                Console.WriteLine("To activate the account please enter an amount to make the balance higher than $25.00 \nCurrent Balance: " + currentBalance);
             }
-
         }
         public void closeAndReportSaving()
         {
