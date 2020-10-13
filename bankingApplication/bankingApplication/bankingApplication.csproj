@@ -46,7 +46,6 @@
     <Compile Include="addOn\Account.cs" />
     <Compile Include="addOn\AccountStatus.cs" />
     <Compile Include="addOn\ChequingAccount.cs" />
-    <Compile Include="addOn\GlobalSavingAccount.cs" />
     <Compile Include="addOn\IExchangeable.cs" />
     <Compile Include="addOn\SavingAccount.cs" />
     <Compile Include="addOn\IAccount.cs" />

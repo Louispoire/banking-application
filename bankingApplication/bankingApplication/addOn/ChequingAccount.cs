@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,28 +17,36 @@ namespace bankingApplication.addOn
 
         public void MakeWithdraw(double wValue)
         {
-            base.MakeWithdrawl(wValue);
-            if (currentBalance < 0)
+            var accStat = AccountStatus.active;
+            if (accStat == AccountStatus.active)
             {
-                serviceCharge += 15;
-                currentBalance += wValue;
+                base.MakeWithdrawl(wValue);
             }
-
+            else
+            {
+                Console.WriteLine("Account is inactive. Sorry for the inconvenience");
+            }
         }
 
         public void MakeADeposit(double dValue)
         {
-            base.MakeDeposit(dValue);
-        }
+            var accStat = AccountStatus.active;
+            if (accStat == AccountStatus.active)
+            {
+                if (dValue > 25)
+                {
+                    base.MakeDeposit(dValue);
+                }
+                else
+                {
+                    Console.WriteLine("Entered amount need to be higher than $25.00");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Account is inactive. Sorry for the inconvenience");
+            }
 
-        public void closeAndReportChequing()
-        {
-            var montlhyFee = 5;
-            var extraFee = serviceCharge * 0.10;
-            var fee = (montlhyFee + extraFee);
-            currentBalance -= fee;
-            Console.WriteLine("A service charge of of " + extraFee + " has been added. Total service charge: " + serviceCharge + ".");
-            base.closeAndReport();
         }
     }
 }
