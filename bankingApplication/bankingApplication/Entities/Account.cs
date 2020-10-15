@@ -40,7 +40,16 @@ namespace bankingApplication.addOn
             cumulatedAmountOfDeposit = 0;
             cumulatedAmountOfWithdrawal = 0;
             double increase = (startingBalance - currentBalance) / startingBalance;
-            string report = "Previous Balance = " +startingBalance+ " | New Balance: " +currentBalance+ " \nYour account has seen an increase of "+increase+"% in terms of value";
+            double temp = 0;
+            if (startingBalance == 5)
+            {
+                temp = startingBalance;
+            }
+            if (startingBalance != 5)
+            {
+                temp = currentBalance;
+            }
+            string report = "Previous Balance = " +temp+ " | New Balance: " +currentBalance+ " \nYour account has seen an increase of "+increase+"% in terms of value";
             return report;
 
 
