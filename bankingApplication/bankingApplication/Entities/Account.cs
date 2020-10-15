@@ -39,7 +39,7 @@ namespace bankingApplication.addOn
             amountOfWithdrawal = 0;
             cumulatedAmountOfDeposit = 0;
             cumulatedAmountOfWithdrawal = 0;
-            double increase = (startingBalance - currentBalance) * 100;
+            double increase = (startingBalance - currentBalance) / startingBalance;
             string report = "Previous Balance = " +startingBalance+ " | New Balance: " +currentBalance+ " \nYour account has seen an increase of "+increase+"% in terms of value";
             return report;
 

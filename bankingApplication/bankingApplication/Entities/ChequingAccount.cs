@@ -39,7 +39,7 @@ namespace bankingApplication.addOn
             var fee = (montlhyFee + extraFee + serviceCharge);
             currentBalance -= fee;
             Console.WriteLine("A service charge of of " + extraFee + " has been added. Total service charge: " + fee + ".");
-            base.closeAndReport();
+            Console.WriteLine(base.closeAndReport());
         }
     }
 }

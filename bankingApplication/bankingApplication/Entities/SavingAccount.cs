@@ -55,12 +55,12 @@ namespace bankingApplication.addOn
             {
                 serviceCharge += 1;
                 Console.WriteLine("A service charge of of $1 has been added. Total service charge: " + serviceCharge+".");
-                base.closeAndReport();
+                Console.WriteLine(base.closeAndReport());
             }
             else
             {
                 Console.WriteLine("No service charge has been added.");
-                base.closeAndReport();
+                Console.WriteLine(base.closeAndReport());
             }
 
 
