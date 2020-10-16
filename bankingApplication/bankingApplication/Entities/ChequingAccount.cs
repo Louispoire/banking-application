@@ -21,10 +21,9 @@ namespace bankingApplication.addOn
             base.MakeWithdrawl(wValue);
             if (currentBalance < 0)
             {
-                serviceCharge += 15;
+                serviceCharge += 15.00;
                 currentBalance += wValue;
             }
-
         }
 
         public void MakeADeposit(double dValue)
@@ -34,11 +33,11 @@ namespace bankingApplication.addOn
 
         public void closeAndReportChequing()
         {
-            var montlhyFee = 5;
+            var montlhyFee = 5.00;
             var extraFee = amountOfWithdrawal * 0.10;
             var fee = (montlhyFee + extraFee + serviceCharge);
             currentBalance -= fee;
-            Console.WriteLine("A service charge of of " + extraFee + " has been added. Total service charge: " + fee + ".");
+            Console.WriteLine("A service charge of " + extraFee.ToString("0.00") + " has been added. Total service charge: " + fee.ToString("0.00") + ".");
             Console.WriteLine(base.closeAndReport());
         }
     }

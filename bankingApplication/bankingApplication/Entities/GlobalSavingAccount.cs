@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace bankingApplication.addOn
 
         public double USValue (double rate)
         {
-            return (startingBalance *= rate);
+            return (currentBalance *= rate);
         }
     }
 }

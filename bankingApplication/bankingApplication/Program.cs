@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using bankingApplication.addOn;
+using System.Collections.Concurrent;
 
 namespace bankingApplication
 {
@@ -27,9 +28,10 @@ namespace bankingApplication
             Console.WriteLine("");
             SavingAccount s1 = new SavingAccount(5.00, annualInterest);
             ChequingAccount c1 = new ChequingAccount(5.00, annualInterest);
+            GlobalSavingAccount g1 = new GlobalSavingAccount(5.00, annualInterest);
             while (endProg != true)
             {
-                Console.WriteLine("Bank Menu:");
+                Console.WriteLine("\n\nBank Menu:");
                 Console.WriteLine("A. Savings");
                 Console.WriteLine("B. Checkings");
                 Console.WriteLine("C: Global Savings");
@@ -46,16 +48,11 @@ namespace bankingApplication
                 if (option.ToLower() == "a" || option.ToLower() == "savings")
                 {
                     bool returnMenu = false;
-                    if (s1.startingBalance == 5)
-                    {
-                        Console.WriteLine("\nCurrent Balance in saving account: $" + Math.Round(s1.startingBalance, 2));
-                        Console.WriteLine("-------------------------------------------");
-                    }
-                    if (s1.startingBalance != 5)
-                    {
-                        Console.WriteLine("\nCurrent Balance in saving account: $" + Math.Round(s1.currentBalance, 2));
-                        Console.WriteLine("-------------------------------------------");
-                    }
+
+                    Math.Round(s1.currentBalance);
+                    Console.WriteLine("\nCurrent Balance in savings account: " + s1.currentBalance.ToString("0.00"));
+                    Console.WriteLine("-------------------------------------------");
+     
                     while (returnMenu != true)
                     {
                         Console.WriteLine("\n\nSaving Account Menu:");
@@ -84,7 +81,7 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
-                            Console.WriteLine("\nHere is the report.\n");
+                            Console.WriteLine("\n\nHere is the report.\n");
                             s1.closeAndReportSaving();
                             continue;
 
@@ -105,16 +102,11 @@ namespace bankingApplication
                 if (option.ToLower() == "b" || option.ToLower() == "checking")
                 {
                     bool returnMenu = false;
-                    if (c1.startingBalance == 5.00)
-                    {
-                        Console.WriteLine("\nCurrent Balance in saving account: $" + Math.Round(c1.startingBalance), 2);
-                        Console.WriteLine("-------------------------------------------");
-                    }
-                    if (c1.startingBalance != 5.00)
-                    {
-                        Console.WriteLine("\nCurrent Balance in saving account: $" + Math.Round(c1.currentBalance), 2);
-                        Console.WriteLine("-------------------------------------------");
-                    }
+
+                    Math.Round(c1.currentBalance);
+                    Console.WriteLine("\nCurrent Balance in chequing account: $" + c1.currentBalance.ToString("0.00"));
+                    Console.WriteLine("-------------------------------------------");
+                   
                     while (returnMenu != true)
                     {
                         Console.WriteLine("\n\nChecking Account Menu:");
@@ -145,7 +137,7 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
-                            Console.WriteLine("\nHere is the report.\n");
+                            Console.WriteLine("\n\nHere is the report.\n");
                             c1.closeAndReportChequing();
                             continue;
 
@@ -166,18 +158,51 @@ namespace bankingApplication
                 if (option.ToLower() == "c" || option.ToLower() == "global savings" || option.ToLower() == "globalsavings")
                 {
                     bool returnMenu = false;
+
+                    Math.Round(g1.currentBalance);
+                    Console.WriteLine("\nCurrent Balance in global savings account: $" + g1.currentBalance.ToString("0.00"));
+                    Console.WriteLine("-------------------------------------------");
+
                     while (returnMenu != true)
                     {
                         Console.WriteLine("\n\nBank Menu:");
-                        Console.WriteLine("A: Report Balance in USD");
+                        Console.WriteLine("A: Deposit");
+                        Console.WriteLine("B. Withdrawal");
+                        Console.WriteLine("C: Close and Report");
+                        Console.WriteLine("D: Report Balance in USD");
                         Console.WriteLine("R: Return to Menu");
-                        Console.WriteLine("Choose an option from above:\n");
+                        Console.WriteLine("Choose an option from above:");
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
-                            GlobalSavingAccount g1 = new GlobalSavingAccount(s1.currentBalance, annualInterest);
+                            Console.WriteLine("\nEnter amount to deposit: ");
+                            double depo = Convert.ToDouble(Console.ReadLine());
+                            g1.MakeADeposit(depo);
+                            Console.WriteLine("\nNumber of deposit made: " + g1.amountOfDeposit);
+                            continue;
+
+                        }
+                        if (option2.ToLower() == "b" || option2.ToLower() == "withdrawal")
+                        {
+                            Console.WriteLine("\nEnter amount to withdraw: ");
+                            double wit = Convert.ToDouble(Console.ReadLine());
+                            g1.MakeWithdraw(wit);
+                            Console.WriteLine("\nNumber of withdrawal made: " + g1.amountOfWithdrawal);
+                            continue;
+
+
+                        }
+                        if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
+                        {
+                            Console.WriteLine("\n\nHere is the report.\n");
+                            g1.closeAndReportSaving();
+                            continue;
+
+                        }
+                        if (option2.ToLower() == "d" || option2.ToLower() == "balanceUS")
+                        {
                             Console.WriteLine("\nHere are the balance in USD:");
-                            Console.WriteLine(Math.Round(g1.USValue(1.33), 2));
+                            Console.WriteLine("$ " + Math.Round(g1.USValue(1.33), 2));
                             continue;
                         }
                         if (option2.ToLower() == "r" || option2.ToLower() == "return" || option.ToLower() == "return menu")
@@ -197,10 +222,6 @@ namespace bankingApplication
                     continue;
                 }
             }
-          
-
-
-
         }
     }
 }

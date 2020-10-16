@@ -13,6 +13,4 @@ namespace bankingApplication.addOn
         void CaclculateInterest();
         string closeAndReport();
     }
-
-    
 }
