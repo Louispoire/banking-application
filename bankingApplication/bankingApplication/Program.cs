@@ -16,27 +16,28 @@ namespace bankingApplication
             double annualInterest = 10.00;
             bool endProg = false;
             Console.WriteLine("Welcome to Atlas Banking System V4.79");
-
+            Thread.Sleep(3000);
+            Console.WriteLine("Created by Cristian and Louis-Philippe");
+            Console.WriteLine("");
+            Thread.Sleep(2000);
             Console.Write("Loading.");
             Thread.Sleep(1000);
             Console.Write(".");
             Thread.Sleep(1000);
             Console.Write(".");
             Thread.Sleep(1000);
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine(" Done!");
             SavingAccount s1 = new SavingAccount(5.00, annualInterest);
             ChequingAccount c1 = new ChequingAccount(5.00, annualInterest);
             GlobalSavingAccount g1 = new GlobalSavingAccount(5.00, annualInterest);
             while (endProg != true)
             {
-                Console.WriteLine("\n\nBank Menu:");
-                Console.WriteLine("A. Savings");
-                Console.WriteLine("B. Checkings");
+                Console.WriteLine("\nBANK MENU:");
+                Console.WriteLine("A: Savings");
+                Console.WriteLine("B: Checkings");
                 Console.WriteLine("C: Global Savings");
                 Console.WriteLine("Q: Exit");
-                Console.WriteLine("Choose an option from above:");
+                Console.WriteLine("\nChoose an option from above:");
                 string option = Console.ReadLine();
                 //--------------------------------
                 if (option.ToLower() == "q" || option.ToLower() == "exit")
@@ -48,19 +49,19 @@ namespace bankingApplication
                 if (option.ToLower() == "a" || option.ToLower() == "savings")
                 {
                     bool returnMenu = false;
-
                     Math.Round(s1.currentBalance);
-                    Console.WriteLine("\nCurrent Balance in savings account: $" + s1.currentBalance.ToString("0.00"));
-                    Console.WriteLine("-------------------------------------------");
+                    
      
                     while (returnMenu != true)
                     {
-                        Console.WriteLine("\n\nSaving Account Menu:");
+                        Console.WriteLine("\nSAVINGS ACCOUNT MENU:");
+                        Console.WriteLine("Current Balance in savings account: $" + s1.currentBalance.ToString("0.00"));
+                        Console.WriteLine("-------------------------------------------");
                         Console.WriteLine("A: Deposit");
-                        Console.WriteLine("B. Withdrawal");
+                        Console.WriteLine("B: Withdrawal");
                         Console.WriteLine("C: Close and Report");
                         Console.WriteLine("R: Return to Menu");
-                        Console.WriteLine("Choose an option from above:");
+                        Console.WriteLine("\nChoose an option from above:");
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
@@ -73,7 +74,7 @@ namespace bankingApplication
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Not a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
                                     
@@ -89,15 +90,23 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Not a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
-                            Console.WriteLine("\n\nHere is the report.\n");
-                            s1.closeAndReportSaving();
-                            continue;
+                            if (s1.reportLimit == false)
+                            {
+                                Console.WriteLine("\n\nHere is the report.\n");
+                                s1.closeAndReportSaving();
+                                continue;
+                            }
+                            if (s1.reportLimit == true)
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Error: Please make another operation before requesting a report.");
+                            }
 
                         }
                         if (option2.ToLower() == "r" || option2.ToLower() == "return" || option.ToLower() == "return menu")
@@ -107,8 +116,7 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() != "a" || option2.ToLower() != "deposit" || option2.ToLower() != "b" || option2.ToLower() != "withdrawal" || option2.ToLower() != "c" || option2.ToLower() != "closereport" || option2.ToLower() != "r" || option2.ToLower() != "return" || option.ToLower() != "return menu")
                         {
-                            Console.WriteLine("\nPlease enter a valid option");
-                            Console.WriteLine("---------------------------");
+                            Console.WriteLine("\nError: Invalid option");
                             continue;
                         }
                     }
@@ -116,19 +124,18 @@ namespace bankingApplication
                 if (option.ToLower() == "b" || option.ToLower() == "checking")
                 {
                     bool returnMenu = false;
-
                     Math.Round(c1.currentBalance);
-                    Console.WriteLine("\nCurrent Balance in chequing account: $" + c1.currentBalance.ToString("0.00"));
-                    Console.WriteLine("-------------------------------------------");
                    
                     while (returnMenu != true)
                     {
-                        Console.WriteLine("\n\nChecking Account Menu:");
+                        Console.WriteLine("\nCHECKINGS ACCOUNT MENU");
+                        Console.WriteLine("Current Balance in chequing account: $" + c1.currentBalance.ToString("0.00"));
+                        Console.WriteLine("-------------------------------------------");
                         Console.WriteLine("A: Deposit");
-                        Console.WriteLine("B. Withdrawal");
+                        Console.WriteLine("B: Withdrawal");
                         Console.WriteLine("C: Close and Report");
                         Console.WriteLine("R: Return to Menu");
-                        Console.WriteLine("Choose an option from above:");
+                        Console.WriteLine("\nChoose an option from above:");
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
@@ -141,7 +148,7 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Please enter a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
 
@@ -157,7 +164,7 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Please enter a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
                             
@@ -165,9 +172,17 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
-                            Console.WriteLine("\n\nHere is the report.\n");
-                            c1.closeAndReportChequing();
-                            continue;
+                            if (c1.reportLimit == false)
+                            {
+                                Console.WriteLine("\n\nHere is the report.\n");
+                                c1.closeAndReportChequing();
+                                continue;
+                            }
+                            if (c1.reportLimit == true)
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Error: Please make another operation before requesting a report.");
+                            }
 
                         }
                         if (option2.ToLower() == "r" || option2.ToLower() == "return" || option.ToLower() == "return menu")
@@ -175,9 +190,9 @@ namespace bankingApplication
                             returnMenu = true;
                             continue;
                         }
-                        if (option2.ToLower() != "a" || option2.ToLower() != "deposit" || option2.ToLower() != "b" || option2.ToLower() != "withdrawal" || option2.ToLower() != "c" || option2.ToLower() != "closereport" || option2.ToLower() != "r" || option2.ToLower() != "return" || option.ToLower() != "return menu")
+                        if (option2.ToLower() != "a" || option2.ToLower() != "deposit" || option2.ToLower() != "b" || option2.ToLower() != "withdrawal" || option2.ToLower() != "c" || option2.ToLower() != "closereport" || option2.ToLower() != "r" || option2.ToLower() != "return" || option2.ToLower() != "return menu")
                         {
-                            Console.WriteLine("\nPlease enter a valid option");
+                            Console.WriteLine("\nError: Invalid option");
                             continue;
                         }
                     }
@@ -186,20 +201,19 @@ namespace bankingApplication
                 if (option.ToLower() == "c" || option.ToLower() == "global savings" || option.ToLower() == "globalsavings")
                 {
                     bool returnMenu = false;
-
                     Math.Round(g1.currentBalance);
-                    Console.WriteLine("\nCurrent Balance in global savings account: $" + g1.currentBalance.ToString("0.00"));
-                    Console.WriteLine("-------------------------------------------");
 
                     while (returnMenu != true)
                     {
-                        Console.WriteLine("\n\nBank Menu:");
+                        Console.WriteLine("\nGLOBAL SAVINGS ACCOUNT MENU");
+                        Console.WriteLine("Current Balance in global savings account: $" + g1.currentBalance.ToString("0.00"));
+                        Console.WriteLine("-------------------------------------------");
                         Console.WriteLine("A: Deposit");
-                        Console.WriteLine("B. Withdrawal");
+                        Console.WriteLine("B: Withdrawal");
                         Console.WriteLine("C: Close and Report");
                         Console.WriteLine("D: Report Balance in USD");
                         Console.WriteLine("R: Return to Menu");
-                        Console.WriteLine("Choose an option from above:");
+                        Console.WriteLine("\nChoose an option from above:");
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
@@ -212,7 +226,7 @@ namespace bankingApplication
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Please enter a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
 
@@ -228,7 +242,7 @@ namespace bankingApplication
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Please enter a valid value!");
+                                Console.WriteLine("Error: Value must be a number");
                             }
                             continue;
 
@@ -236,9 +250,17 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
                         {
-                            Console.WriteLine("\n\nHere is the report.\n");
-                            g1.closeAndReportSaving();
-                            continue;
+                            if (g1.reportLimit == false)
+                            {
+                                Console.WriteLine("\n\nHere is the report.\n");
+                                g1.closeAndReportSaving();
+                                continue;
+                            }
+                            if (g1.reportLimit == true)
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Error: Please make another operation before requesting a report.");
+                            }
 
                         }
                         if (option2.ToLower() == "d" || option2.ToLower() == "balanceUS")
@@ -254,13 +276,14 @@ namespace bankingApplication
                         }
                         if (option2.ToLower() != "r" || option2.ToLower() != "return" || option.ToLower() != "return menu" || option2.ToLower() != "a" || option2.ToLower() != "deposit")
                         {
-                            Console.WriteLine("Enter valid value");
+                            Console.WriteLine("\nError: Invalid option");
                             continue;
                         }
                     }
                 }
-                else
+                if (option.ToLower() != "a" || option.ToLower() != "savings" || option.ToLower() != "b" || option.ToLower() != "checkings" || option.ToLower() != "c" || option.ToLower() != "globalssavings" || option.ToLower() != "r" || option.ToLower() != "return" || option.ToLower() != "return menu")
                 {
+                    Console.WriteLine("\nError: Invalid option");
                     continue;
                 }
             }

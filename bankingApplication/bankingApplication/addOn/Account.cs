@@ -8,6 +8,7 @@ namespace bankingApplication.addOn
 {
     abstract class Account : IAccount
     {
+        public bool reportLimit = true;
         public double startingBalance;
         public double currentBalance;
         public int amountOfDeposit = 0;
@@ -56,6 +57,7 @@ namespace bankingApplication.addOn
                 string report = "Previous Balance = $" + startingBalance.ToString("0.00") + " | New Balance: $" + currentBalance.ToString("0.00 ") +
                     "\nYour account has seen a decrease of -" + a + "% in terms of value";
                 startingBalance = currentBalance;
+                reportLimit = true;
                 return report;
             }
             else
@@ -63,12 +65,14 @@ namespace bankingApplication.addOn
                 string report = "Previous Balance = $" + startingBalance.ToString("0.00") + " | New Balance: $" + currentBalance.ToString("0.00 ") +
                     "\nYour account has seen an increase of " + a + "% in terms of value";
                 startingBalance = currentBalance;
+                reportLimit = true;
                 return report;
             }
         }
 
         public void MakeDeposit(double amount)
         {
+            reportLimit = false;
             currentBalance += amount;
             amountOfDeposit++;
             cumulatedAmountOfDeposit += amount;
@@ -78,6 +82,7 @@ namespace bankingApplication.addOn
 
         public void MakeWithdrawl(double amount)
         {
+            reportLimit = false;
             currentBalance -= amount;
             amountOfWithdrawal++;
             cumulatedAmountOfWithdrawal += amount;
