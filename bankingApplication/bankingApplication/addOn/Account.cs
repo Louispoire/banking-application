@@ -32,17 +32,19 @@ namespace bankingApplication.addOn
             currentBalance = currentBalance + monthlyInterest;  
         }
 
+        /*
         public double getPercentageChange()
         {
             double increase = Math.Round(((currentBalance / startingBalance) * 100), 2);
             return increase;
         }
+        */
 
         public string closeAndReport()
         {
             currentBalance -= serviceCharge;
             CaclculateInterest();
-            double a = getPercentageChange();
+            double a = Extensions.getPercentageChange(currentBalance,startingBalance);
             amountOfDeposit = 0;
             amountOfWithdrawal = 0;
             cumulatedAmountOfDeposit = 0;

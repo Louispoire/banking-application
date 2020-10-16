@@ -50,7 +50,7 @@ namespace bankingApplication
                     bool returnMenu = false;
 
                     Math.Round(s1.currentBalance);
-                    Console.WriteLine("\nCurrent Balance in savings account: " + s1.currentBalance.ToString("0.00"));
+                    Console.WriteLine("\nCurrent Balance in savings account: $" + s1.currentBalance.ToString("0.00"));
                     Console.WriteLine("-------------------------------------------");
      
                     while (returnMenu != true)
@@ -65,18 +65,32 @@ namespace bankingApplication
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
                             Console.WriteLine("\nEnter amount to deposit: ");
-                            double depo = Convert.ToDouble(Console.ReadLine());
-                            s1.MakeADeposit(depo);
-                            Console.WriteLine("\nNumber of deposit made: " + s1.amountOfDeposit);
+                            try
+                            {
+                                double depo = Convert.ToDouble(Console.ReadLine());
+                                s1.MakeADeposit(depo);
+                                Console.WriteLine("\nNumber of deposit made: " + s1.amountOfDeposit);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Not a valid value!");
+                            }
                             continue;
                                     
                         }
                         if (option2.ToLower() == "b" || option2.ToLower() == "withdrawal")
                         {
-                            Console.WriteLine("\nEnter amount to withdraw: ");
-                            double wit = Convert.ToDouble(Console.ReadLine());
-                            s1.MakeWithdraw(wit);
-                            Console.WriteLine("\nNumber of withdrawal made: " + s1.amountOfWithdrawal);
+                            try
+                            {
+                                Console.WriteLine("\nEnter amount to withdraw: ");
+                                double wit = Convert.ToDouble(Console.ReadLine());
+                                s1.MakeWithdraw(wit);
+                                Console.WriteLine("\nNumber of withdrawal made: " + s1.amountOfWithdrawal);
+                            }
+                            catch(Exception e)
+                            {
+                                Console.WriteLine("Not a valid value!");
+                            }
                             continue;
                         }
                         if (option2.ToLower() == "c" || option2.ToLower() == "closereport")
@@ -118,19 +132,33 @@ namespace bankingApplication
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
-                            Console.WriteLine("\nEnter amount to deposit: ");
-                            double depo = Convert.ToDouble(Console.ReadLine());
-                            c1.MakeADeposit(depo);
-                            Console.WriteLine("\nNumber of deposit made: " + c1.amountOfDeposit);
+                            try
+                            {
+                                Console.WriteLine("\nEnter amount to deposit: ");
+                                double depo = Convert.ToDouble(Console.ReadLine());
+                                c1.MakeADeposit(depo);
+                                Console.WriteLine("\nNumber of deposit made: " + c1.amountOfDeposit);
+                            }
+                            catch(Exception e)
+                            {
+                                Console.WriteLine("Please enter a valid value!");
+                            }
                             continue;
 
                         }
                         if (option2.ToLower() == "b" || option2.ToLower() == "withdrawal")
                         {
-                            Console.WriteLine("\nEnter amount to withdraw: ");
-                            double wit = Convert.ToDouble(Console.ReadLine());
-                            c1.MakeWithdraw(wit);
-                            Console.WriteLine("\nNumber of withdrawal made: " + c1.amountOfWithdrawal);
+                            try
+                            {
+                                Console.WriteLine("\nEnter amount to withdraw: ");
+                                double wit = Convert.ToDouble(Console.ReadLine());
+                                c1.MakeWithdraw(wit);
+                                Console.WriteLine("\nNumber of withdrawal made: " + c1.amountOfWithdrawal);
+                            }
+                            catch(Exception e)
+                            {
+                                Console.WriteLine("Please enter a valid value!");
+                            }
                             continue;
                             
                            
@@ -175,19 +203,33 @@ namespace bankingApplication
                         string option2 = Console.ReadLine();
                         if (option2.ToLower() == "a" || option2.ToLower() == "deposit")
                         {
-                            Console.WriteLine("\nEnter amount to deposit: ");
-                            double depo = Convert.ToDouble(Console.ReadLine());
-                            g1.MakeADeposit(depo);
-                            Console.WriteLine("\nNumber of deposit made: " + g1.amountOfDeposit);
+                            try
+                            {
+                                Console.WriteLine("\nEnter amount to deposit: ");
+                                double depo = Convert.ToDouble(Console.ReadLine());
+                                g1.MakeADeposit(depo);
+                                Console.WriteLine("\nNumber of deposit made: " + g1.amountOfDeposit);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Please enter a valid value!");
+                            }
                             continue;
 
                         }
                         if (option2.ToLower() == "b" || option2.ToLower() == "withdrawal")
                         {
-                            Console.WriteLine("\nEnter amount to withdraw: ");
-                            double wit = Convert.ToDouble(Console.ReadLine());
-                            g1.MakeWithdraw(wit);
-                            Console.WriteLine("\nNumber of withdrawal made: " + g1.amountOfWithdrawal);
+                            try
+                            {
+                                Console.WriteLine("\nEnter amount to withdraw: ");
+                                double wit = Convert.ToDouble(Console.ReadLine());
+                                g1.MakeWithdraw(wit);
+                                Console.WriteLine("\nNumber of withdrawal made: " + g1.amountOfWithdrawal);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Please enter a valid value!");
+                            }
                             continue;
 
 
