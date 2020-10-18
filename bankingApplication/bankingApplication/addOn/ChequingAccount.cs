@@ -21,7 +21,7 @@ namespace bankingApplication.addOn
             if (currentBalance - wValue < 0)
             {
                 serviceCharge += 15.00;
-                Console.WriteLine("\nSorry, you don't have sufficient funds for the withdrawawl.");
+                Console.WriteLine("\nSorry, you don't have sufficient funds for this withdrawawl.");
             }
             else
             {

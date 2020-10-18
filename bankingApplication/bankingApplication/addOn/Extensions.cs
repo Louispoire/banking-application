@@ -13,8 +13,5 @@ namespace bankingApplication.addOn
             double increase = Math.Round(((a / b) * 100), 2);
             return increase;
         }
-
-
-
     }
 }

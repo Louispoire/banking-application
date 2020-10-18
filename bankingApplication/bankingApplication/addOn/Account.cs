@@ -30,16 +30,10 @@ namespace bankingApplication.addOn
         {
             double monthlyInterestRate = (annualInterest / 12);
             double monthlyInterest = currentBalance * monthlyInterestRate;
-            currentBalance = currentBalance + monthlyInterest;  
+            currentBalance = currentBalance + monthlyInterest;
+            Math.Round(monthlyInterest,2);
+            Console.WriteLine("Your total interest: $" + monthlyInterest.ToString("0.00"));
         }
-
-        /*
-        public double getPercentageChange()
-        {
-            double increase = Math.Round(((currentBalance / startingBalance) * 100), 2);
-            return increase;
-        }
-        */
 
         public string closeAndReport()
         {

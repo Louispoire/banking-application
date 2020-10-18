@@ -22,7 +22,7 @@ namespace bankingApplication.addOn
                 accountStatus = AccountStatus.active;
                 if(currentBalance - wValue < 0) //Exception
                 {
-                    Console.WriteLine("\nSorry, you don't have sufficient funds for the withdrawawl.");
+                    Console.WriteLine("\nSorry, you don't have sufficient funds for this withdrawawl.");
                 }
                 else
                 {
