@@ -74,7 +74,7 @@ namespace bankingApplication
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("Error: Value must be a number");
+                                Console.WriteLine("\nError: Value must be a number");
                             }
                             continue;
                                     
@@ -90,7 +90,7 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Error: Value must be a number");
+                                Console.WriteLine("\nError: Value must be a number");
                             }
                             continue;
                         }
@@ -148,7 +148,7 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Error: Value must be a number");
+                                Console.WriteLine("\nError: Value must be a number");
                             }
                             continue;
 
@@ -164,7 +164,7 @@ namespace bankingApplication
                             }
                             catch(Exception e)
                             {
-                                Console.WriteLine("Error: Value must be a number");
+                                Console.WriteLine("\nError: Value must be a number");
                             }
                             continue;
                             
