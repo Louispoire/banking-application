@@ -18,11 +18,14 @@ namespace bankingApplication.addOn
 
         public void MakeWithdraw(double wValue)
         {
-            base.MakeWithdrawl(wValue);
-            if (currentBalance < 0)
+            if (currentBalance - wValue < 0)
             {
                 serviceCharge += 15.00;
-                currentBalance += wValue;
+                Console.WriteLine("\nSorry, you don't have sufficient funds for the withdrawawl.");
+            }
+            else
+            {
+                base.MakeWithdrawl(wValue);
             }
         }
 
