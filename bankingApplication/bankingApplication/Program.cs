@@ -266,7 +266,8 @@ namespace bankingApplication
                         if (option2.ToLower() == "d" || option2.ToLower() == "balanceUS")
                         {
                             Console.WriteLine("\nHere are the balance in USD:");
-                            Console.WriteLine("$" + Math.Round(g1.USValue(1.33), 2));
+                            Math.Round(g1.USValue(0.76), 2);
+                            Console.WriteLine("$" + g1.USValue(0.76).ToString("0.00"));
                             continue;
                         }
                         if (option2.ToLower() == "r" || option2.ToLower() == "return" || option.ToLower() == "return menu")
